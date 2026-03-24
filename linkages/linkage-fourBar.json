@@ -1,0 +1,59 @@
+{
+  "bodies": [
+    {
+      "name": "Frame",
+      "points": [
+        {"id": "P0", "location": [0, 0, 0]},
+        {"id": "P1", "location": [-0.254, 0, 0]}
+      ]
+    },
+    {
+      "name": "Crank",
+      "points": [
+        {"id": "P1", "location": [-0.053975, 0, 0]},
+        {"id": "P2", "location": [0.053975, 0, 0]}
+      ]
+    },
+    {
+      "name": "Follower",
+      "points": [
+        {"id": "P2", "location": [-0.1397, 0, 0]},
+        {"id": "P3", "location": [0.1397, 0, 0]}
+      ]
+    },
+    {
+      "name": "Lever",
+      "points": [
+        {"id": "P3", "location": [-0.135255, 0, 0]},
+        {"id": "P0", "location": [0.135255, 0, 0]}
+      ]
+    }
+  ],
+
+  "joints": [
+    {
+      "label": "P0",
+      "bodies": ["Frame", "Lever"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P1",
+      "bodies": ["Frame", "Crank"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P2",
+      "bodies": ["Crank", "Follower"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P3",
+      "bodies": ["Follower", "Lever"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    }
+  ]
+}

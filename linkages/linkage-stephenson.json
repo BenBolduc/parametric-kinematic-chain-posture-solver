@@ -1,0 +1,65 @@
+{
+  "bodies": [
+    {
+      "name": "Frame",
+      "points": [
+        {"id": "P0", "location": [0, 0, 0]},
+        {"id": "P4", "location": [0.35, 0, 0]},
+        {"id": "P7", "location": [0.6, 0, 0]}
+      ]
+    },
+    {
+      "name": "Crank_AD",
+      "points": [
+        {"id": "P0", "location": [0, 0, 0]},
+        {"id": "P1", "location": [0, 0.08, 0]}
+      ]
+    },
+    {
+      "name": "Coupler_DC",
+      "points": [
+        {"id": "P1", "location": [0, 0, 0]},
+        {"id": "P2", "location": [0.25, 0.05, 0]}
+      ]
+    },
+    {
+      "name": "Ternary_CFK",
+      "points": [
+        {"id": "P2", "location": [0, 0, 0]},
+        {"id": "P3", "location": [0.12, 0, 0]},
+        {"id": "P5", "location": [0.06, 0.1, 0]}
+      ]
+    },
+    {
+      "name": "Rocker_FG",
+      "points": [
+        {"id": "P3", "location": [0, 0, 0]},
+        {"id": "P4", "location": [0, -0.2, 0]}
+      ]
+    },
+    {
+      "name": "Output_KM",
+      "points": [
+        {"id": "P5", "location": [0, 0, 0]},
+        {"id": "P6", "location": [0.15, 0.2, 0]}
+      ]
+    },
+    {
+      "name": "Follower_MO",
+      "points": [
+        {"id": "P6", "location": [0, 0, 0]},
+        {"id": "P7", "location": [0.15, -0.3, 0]}
+      ]
+    }
+  ],
+  "joints": [
+    {"label": "P0", "bodies": ["Frame", "Crank_AD"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P1", "bodies": ["Crank_AD", "Coupler_DC"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P2", "bodies": ["Coupler_DC", "Ternary_CFK"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P3", "bodies": ["Ternary_CFK", "Rocker_FG"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P4", "bodies": ["Rocker_FG", "Frame"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P5", "bodies": ["Ternary_CFK", "Output_KM"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P6", "bodies": ["Output_KM", "Follower_MO"], "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "P7", "bodies": ["Follower_MO", "Frame"], "type": "revolute", "axis": [0, 0, 1]}
+  ]
+}

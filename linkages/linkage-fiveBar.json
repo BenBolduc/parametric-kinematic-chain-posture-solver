@@ -1,0 +1,71 @@
+{
+  "bodies": [
+    {
+      "name": "Frame",
+      "points": [
+        {"id": "P0", "location": [0, 0, 0]},
+        {"id": "P1", "location": [-1.0, 0, 0]}
+      ]
+    },
+    {
+      "name": "Link1",
+      "points": [
+        {"id": "P1", "location": [0, 0, 0]},
+        {"id": "P2", "location": [0.5, 0, 0]}
+      ]
+    },
+    {
+      "name": "Link2",
+      "points": [
+        {"id": "P2", "location": [0, 0, 0]},
+        {"id": "P3", "location": [0.7, 0, 0]}
+      ]
+    },
+    {
+      "name": "Link3",
+      "points": [
+        {"id": "P3", "location": [0, 0, 0]},
+        {"id": "P4", "location": [0.8, 0, 0]}
+      ]
+    },
+    {
+      "name": "Link4",
+      "points": [
+        {"id": "P4", "location": [0, 0, 0]},
+        {"id": "P0", "location": [0.4, 0, 0]}
+      ]
+    }
+  ],
+  "joints": [
+    {
+      "label": "P0",
+      "bodies": ["Frame", "Link4"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P1",
+      "bodies": ["Frame", "Link1"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P2",
+      "bodies": ["Link1", "Link2"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P3",
+      "bodies": ["Link2", "Link3"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    },
+    {
+      "label": "P4",
+      "bodies": ["Link3", "Link4"],
+      "type": "revolute",
+      "axis": [0, 0, 1]
+    }
+  ]
+}
