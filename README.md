@@ -8,11 +8,11 @@ This research develops a parametric numerical solver to compute the constrained 
 ## Supervision
 This project was developed at **ISAE-SUPAERO** under the guidance of the following tutors:
 
-| Name | Department |
-| :--- | :--- |
-| **José O. NEVES** | ISAE-SUPAERO |
-| **Francesco SANFEDINO** | ISAE-SUPAERO |
-| **Daniel ALAZARD** | ISAE-SUPAERO |
+**José O. NEVES**, ISAE-SUPAERO
+
+**Francesco SANFEDINO**, ISAE-SUPAERO
+
+**Daniel ALAZARD**, ISAE-SUPAERO
 
 ## How to Run
 This tool is built entirely in MATLAB. No external toolboxes are required.
