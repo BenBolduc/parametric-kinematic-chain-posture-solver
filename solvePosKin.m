@@ -1,203 +1,238 @@
 % =========================================================================
-% solvePosKin.m
+% main.m
 % =========================================================================
 % Author:        Benjamin B Bolduc
 % Last updated:  March 2026
 %
 % Description: 
-%   This function serves as the JSON parser for the solver. It is fed an
-%   abstract JSON mechanism definition and applies graph theory to 
-%   autonomously find independent kinematic loops. It then extracts local 
-%   vectors across each body, setting up the geometry required for the 
-%   numerical loop-closure equations.
+%   Front-end GUI to load a mechanism JSON, define initial guesses, 
+%   select input joints, and automatically launch the solver.
 % =========================================================================
 
-function mechanism = solvePosKin(jsonFile)
-    
-    %% ====================================================================
-    % PART 1: GEOMETRY PARSING (Abstract Data to MATLAB Struct)
-    % ====================================================================
-    % The simulation is initialized by loading the JSON file and converting 
-    % it into a MATLAB struct. Extract the spatial coordinates [X, Y, Z] 
-    % for every connection point on every mechanical body.
+function main()
+    clc;
 
+    bgDark = [0.15 0.15 0.15];
+    bgEdit = [0.25 0.25 0.25];
+    fgText = [1 1 1];
+    
+    % =====================================================================
+    % 1. File Explorer Prompt
+    % =====================================================================
+    [fileName, filePath] = uigetfile('*.json', 'Select Mechanism JSON', 'linkages/');
+    if isequal(fileName,0)
+        disp('User canceled file selection.');
+        return;
+    end
+    jsonFile = fullfile(filePath, fileName);
+    
+    % =====================================================================
+    % 2. Preliminary JSON Parse & Filter
+    % =====================================================================
     jsonData = jsondecode(fileread(jsonFile));
-    nB = numel(jsonData.bodies);
-    mechanism.bodies = struct('name', cell(1, nB), 'points', cell(1, nB));
-    mechanism.joints = jsonData.joints;
     
-    for i = 1:nB
-        if iscell(jsonData.bodies) 
-            bd = jsonData.bodies{i}; 
-        else
-            bd = jsonData.bodies(i); 
-        end
-        
-        mechanism.bodies(i).name = bd.name;
-        p = struct('id', {}, 'location', {});
-
-        for j = 1:numel(bd.points)
-            p(j).id = bd.points(j).id;
-            p(j).location = bd.points(j).location(:); % Force column vector [X; Y; Z]
-        end
-
-        mechanism.bodies(i).points = p;
+    if iscell(jsonData.joints)
+        joints = jsonData.joints;
+    else
+        joints = num2cell(jsonData.joints); 
     end
     
-    %% ====================================================================
-    % PART 2: GRAPH THEORY (Mapping the Topology)
-    % ====================================================================
-    % Treat every mechanical body as a "Node" and every joint as an "Edge".
-    % We construct a square Adjacency Matrix and fill it with 1s wherever 
-    % two bodies share a physical connection. This mathematically maps out 
-    % the entire topology of the mechanism.
-
-    adj = zeros(nB, nB);
-
-    for i = 1:numel(mechanism.joints)
-        if iscell(mechanism.joints)
-            jnt = mechanism.joints{i};
-        else
-            jnt = mechanism.joints(i);
-        end
+    % Extract only unique joint labels
+    allLabels = cell(1, numel(joints));
+    for i = 1:numel(joints)
+        allLabels{i} = joints{i}.label;
+    end
+    uniqueLabels = unique(allLabels);
+    nUnique = numel(uniqueLabels);
+    
+    % =====================================================================
+    % 3. Build the UI Window
+    % =====================================================================
+    f = uifigure('Name', ['Setup: ' fileName], 'Position', [200 200 480 600], 'Color', bgDark);
+               
+    pnl = uipanel(f, 'Position', [0 100 480 500], 'Scrollable', 'on', 'BackgroundColor', bgDark, 'BorderType', 'none');
+    
+    contentHeight = max(500, 50 + (nUnique * 30));
+    uilabel(pnl, 'Position', [20, contentHeight-30, 100, 20], 'Text', 'Joint Label', ...
+            'FontWeight', 'bold', 'HorizontalAlignment', 'left', 'FontColor', fgText);
+    uilabel(pnl, 'Position', [150, contentHeight-30, 80, 20], 'Text', 'Is Input?', ...
+            'FontWeight', 'bold', 'FontColor', fgText);
+    uilabel(pnl, 'Position', [250, contentHeight-30, 120, 20], 'Text', 'Guess / Target', ...
+            'FontWeight', 'bold', 'FontColor', fgText);
+            
+    chkInputs = gobjects(nUnique, 1);
+    edtGuesses = gobjects(nUnique, 1);
+    yOffset = contentHeight - 60;
+    
+    for i = 1:nUnique
+        uilabel(pnl, 'Position', [20, yOffset, 120, 20], 'Text', uniqueLabels{i}, ...
+                'HorizontalAlignment', 'left', 'FontColor', fgText);
         
-        bNames = jnt.bodies;
-        idx1 = find(strcmp({mechanism.bodies.name}, bNames{1}));
-        idx2 = find(strcmp({mechanism.bodies.name}, bNames{2}));
+        chkInputs(i) = uicheckbox(pnl, 'Position', [180, yOffset, 20, 20], 'Text', '');
         
-        % The connection is bidirectional
-        adj(idx1, idx2) = 1; 
-        adj(idx2, idx1) = 1;
+        % Use 'text' instead of 'numeric' to allow arrays like "100, -100"
+        % as inputs
+        edtGuesses(i) = uieditfield(pnl, 'text', 'Position', [260, yOffset, 100, 25], 'Value', '0', ...
+                                    'BackgroundColor', bgEdit, 'FontColor', fgText);
+        
+        yOffset = yOffset - 30;
     end
     
-    %% ====================================================================
-    % PART 3: AUTOMATED LOOP DISCOVERY & VECTOR FORMULATION
-    % ====================================================================
-    % Feed the adjacency matrix into MATLAB's graph algorithm to find the 
-    % the minimum number of independent loops.
-
-    cycles = cyclebasis(graph(adj));
-    mechanism.loops = struct();
+   % Angle Limits (Top Row)
+    uilabel(f, 'Position', [20, 75, 100, 20], 'Text', 'Angle Min (deg):', 'FontColor', fgText);
+    edtMinAng = uieditfield(f, 'numeric', 'Position', [120, 75, 60, 25], 'Value', 0, 'BackgroundColor', bgEdit, 'FontColor', fgText);
+    uilabel(f, 'Position', [200, 75, 100, 20], 'Text', 'Angle Max (deg):', 'FontColor', fgText);
+    edtMaxAng = uieditfield(f, 'numeric', 'Position', [300, 75, 60, 25], 'Value', 360, 'BackgroundColor', bgEdit, 'FontColor', fgText);
     
-    for k = 1:numel(cycles)
-        path = cycles{k}; 
-        loopB = [path, path(1)]; % Close the path back to the start node
-        vecs = zeros(3, numel(path));
-        
-        % Initialize arrays to track joint properties along this specific loop
-        isPrismatic = false(1, numel(path)); 
-        isPrismatic3D = false(1, numel(path));
-        axes_list = zeros(3, numel(path));
-        jointLabels = cell(1, numel(path));
-        jointDirs = zeros(1, numel(path));
-        
-        % --- Vector Formulation ---
-        % Walk along the closed loop. For each body, identify the joint 
-        % used to enter the body and the joint used to exit it. Then compute 
-        % the 3D vector between these two points.
-        
-        for i = 1:numel(path)
-            % Find the previous body
-            if i == 1
-                bPrev = mechanism.bodies(loopB(end-1)); 
-            else 
-                bPrev = mechanism.bodies(loopB(i-1)); 
-            end
-            
-            bCurr = mechanism.bodies(loopB(i));
-            bNext = mechanism.bodies(loopB(i+1));
-            
-            % Find the entry joint (shared with previous body)
-            jntEntryIdx = 0;
-            for j = 1:numel(mechanism.joints)
-                if iscell(mechanism.joints)
-                    jnt = mechanism.joints{j}; 
-                else
-                    jnt = mechanism.joints(j); 
-                end
+    % Length Limits (Middle Row)
+    uilabel(f, 'Position', [20, 45, 100, 20], 'Text', 'Length Min (m):', 'FontColor', fgText);
+    edtMinLen = uieditfield(f, 'numeric', 'Position', [120, 45, 60, 25], 'Value', 0, 'BackgroundColor', bgEdit, 'FontColor', fgText);
+    uilabel(f, 'Position', [200, 45, 100, 20], 'Text', 'Length Max (m):', 'FontColor', fgText);
+    edtMaxLen = uieditfield(f, 'numeric', 'Position', [300, 45, 60, 25], 'Value', 0.5, 'BackgroundColor', bgEdit, 'FontColor', fgText);
 
-                if all(ismember(jnt.bodies, {bPrev.name, bCurr.name}))
-                    jntEntryIdx = j; 
+    % Launch Controls (Bottom Row)
+    chkSlider = uicheckbox(f, 'Position', [20, 15, 140, 20], 'Text', 'Launch Dynamic Slider', 'FontColor', fgText, 'Value', 1);
+    uibutton(f, 'Position', [165, 10, 150, 30], 'Text', 'LAUNCH SOLVER', 'FontWeight', 'bold', 'BackgroundColor', [0.2 0.6 0.2], 'FontColor', 'w', 'ButtonPushedFcn', @launchCallback);
+    chkLabels = uicheckbox(f, 'Position', [330, 15, 100, 20], 'Text', 'Show Labels', 'FontColor', fgText, 'Value', 1);
+                           
+    % =====================================================================
+    % 4. Launch Callback
+    % =====================================================================
+    function launchCallback(~, ~)
+        thetaGuesses = struct();
+        inputJoints = {};
+        thetaInputs = struct(); 
+        
+        for k = 1:nUnique
+            val = str2num(edtGuesses(k).Value); 
+            if isempty(val), val = 0; end
+            
+            isPrism = false;
+            for j = 1:numel(joints)
+                if strcmp(joints{j}.label, uniqueLabels{k})
+                    if isfield(joints{j}, 'type') && strcmpi(joints{j}.type, 'prismatic')
+                        isPrism = true;
+                    end
                     break;
                 end
             end
             
-            if iscell(mechanism.joints)
-                entryJnt = mechanism.joints{jntEntryIdx};
+            if isPrism
+                convertedVal = val; 
             else
-                entryJnt = mechanism.joints(jntEntryIdx); 
+                convertedVal = deg2rad(val); 
             end
-            lblEntry = entryJnt.label;
             
-            % Find the exit joint (shared with next body)
-            jntExitIdx = 0;
-            for j = 1:numel(mechanism.joints)
-                if iscell(mechanism.joints)
-                    jnt = mechanism.joints{j}; 
-                else 
-                    jnt = mechanism.joints(j); 
-                end
-                
-                if all(ismember(jnt.bodies, {bCurr.name, bNext.name}))
-                    jntExitIdx = j; 
+            thetaGuesses.(uniqueLabels{k}) = convertedVal; 
+            if chkInputs(k).Value == 1 
+                inputJoints{end+1} = uniqueLabels{k};
+                thetaInputs.(uniqueLabels{k}) = convertedVal(1); 
+            end
+        end
+        
+        % Generate the limits array dynamically based on joint type
+        angle_limits = zeros(numel(inputJoints), 2);
+        for idx = 1:numel(inputJoints)
+            % Check if this specific input joint is prismatic
+            isPrism = false;
+            for j = 1:numel(joints)
+                if strcmp(joints{j}.label, inputJoints{idx}) && isfield(joints{j}, 'type') && strcmpi(joints{j}.type, 'prismatic')
+                    isPrism = true; 
                     break;
                 end
             end
-
-            if iscell(mechanism.joints)
-                exitJnt = mechanism.joints{jntExitIdx}; 
-            else 
-                exitJnt = mechanism.joints(jntExitIdx); 
-            end
-            lblExit = exitJnt.label;
-
-            % Determine traversal direction (Forward = 1, Backward = -1)
-            if strcmp(bCurr.name, exitJnt.bodies{1})
-                jointDirs(i) = 1;  
+            
+            % Assign the correct limits from the UI
+            if isPrism
+                angle_limits(idx, 1) = edtMinLen.Value;
+                angle_limits(idx, 2) = edtMaxLen.Value;
             else
-                jointDirs(i) = -1; 
+                angle_limits(idx, 1) = edtMinAng.Value;
+                angle_limits(idx, 2) = edtMaxAng.Value;
             end
-
-            jointLabels{i} = lblExit;
-            
-            % Extract the axis of rotation/translation
-            if isfield(exitJnt, 'axis')
-                axes_list(:, i) = exitJnt.axis(:);
-            else
-                axes_list(:, i) = [0; 0; 1]; % Default to planar Z-axis if missing
-            end
-
-            % --- Kinematic Dimensionality Logic ---
-            % 2D: Translates if it touches any rail
-            if (isfield(exitJnt, 'type') && strcmpi(exitJnt.type, 'prismatic')) || ...
-               (isfield(entryJnt, 'type') && strcmpi(entryJnt.type, 'prismatic'))
-                isPrismatic(i) = true;
-            end
-            
-            % 3D: Only slides if the exit joint is a rail
-            if isfield(exitJnt, 'type') && strcmpi(exitJnt.type, 'prismatic')
-                isPrismatic3D(i) = true;
-            end
-
-            % Find the specific [X,Y,Z] coordinates for the entry and exit points
-            pEntryIdx = find(strcmp({bCurr.points.id}, lblEntry), 1);
-            pExitIdx  = find(strcmp({bCurr.points.id}, lblExit), 1);
-            
-            if isempty(pEntryIdx) || isempty(pExitIdx)
-                error('PARSER ERROR: Body "%s" missing point "%s" or "%s"', bCurr.name, lblEntry, lblExit);
-            end
-            
-            % Calculate the local unrotated geometric vector of the physical link
-            vecs(:,i) = bCurr.points(pExitIdx).location - bCurr.points(pEntryIdx).location;
         end
         
-        % Store the loop data
-        mechanism.loops(k).bodyIndices = path;
-        mechanism.loops(k).vectors = vecs;
-        mechanism.loops(k).axes = axes_list;
-        mechanism.loops(k).jointLabels = jointLabels;
-        mechanism.loops(k).isPrismatic = isPrismatic;
-        mechanism.loops(k).isPrismatic3D = isPrismatic3D;
-        mechanism.loops(k).dirs = jointDirs;
+        showLabelsFlag = chkLabels.Value;
+        launchSliderFlag = chkSlider.Value; % Capture the slider checkbox state
+        
+        close(f);
+        
+        mechanism = solvePosKin(jsonFile);
+        
+        fprintf('\n======================================================\n');
+        fprintf(' STATIC POSTURE VERIFICATION: %s\n', jsonFile);
+        fprintf('======================================================\n');
+        
+        t_start = tic;
+
+        [thetaSolved, maxResidual, posError, angError, exitflag] = closureEqsSolver(thetaInputs, thetaGuesses, mechanism);
+        
+        solveTime = toc(t_start);
+
+        if exitflag > 0
+            fprintf('SUCCESS: Mechanism loops closed perfectly.\n');
+            fprintf(' -> Solve Time:                %.4f seconds\n', solveTime);
+            fprintf(' -> Max Translation Error:     %.4e m\n', posError);
+            fprintf(' -> Max Angular Error: %.4e deg\n\n', angError);
+            
+            % --- RESTORED CONSOLE REPORTING BLOCK ---
+            fprintf('--- Solved Joint Angles & Extensions ---\n');
+            fields = fieldnames(thetaSolved);
+            for i = 1:numel(fields)
+                jointName = fields{i};
+                if ~strcmp(jointName, 'GlobalAngles')
+                    b1 = 'Unknown'; b2 = 'Unknown';
+                    isPrism = false;
+                    for j = 1:numel(mechanism.joints)
+                        if iscell(mechanism.joints), jnt = mechanism.joints{j}; else, jnt = mechanism.joints(j); end
+                        if strcmp(jnt.label, jointName)
+                            b1 = jnt.bodies{1}; b2 = jnt.bodies{2};
+                            if isfield(jnt, 'type') && strcmpi(jnt.type, 'prismatic')
+                                isPrism = true;
+                            end
+                            break;
+                        end
+                    end
+                    
+                    if isPrism
+                        val = thetaSolved.(jointName); 
+                        fprintf(' %s (%s -> %s): %.3f m\n', jointName, b1, b2, val);
+                    else
+                        val = rad2deg(thetaSolved.(jointName)); 
+                        fprintf(' %s (%s -> %s): %.2f deg\n', jointName, b1, b2, val);
+                    end
+                end
+            end
+            fprintf('\n');
+            % ----------------------------------------
+            
+            staticFig = figure('Name', ['Verification Report: ' jsonFile], ...
+                               'Position', [150, 150, 800, 600], 'Color', bgDark);
+            
+            linkageVisualizer(staticFig, mechanism, thetaSolved, false, showLabelsFlag);
+            
+            ax = gca;
+            set(ax, 'Position', [0.35 0.1 0.60 0.8]);
+            axis(ax, 'equal');
+            x_lim = ax.XLim; y_lim = ax.YLim;
+            padX = (x_lim(2) - x_lim(1)) * 0.2; padY = (y_lim(2) - y_lim(1)) * 0.2; 
+            set(ax, 'XLim', [x_lim(1)-padX, x_lim(2)+padX], 'YLim', [y_lim(1)-padY, y_lim(2)+padY]);
+            grid(ax, 'on');
+            
+            titleStr = sprintf('Static Posture Verification: %s\nMax Translation Error: %.2e m | Max Angular Error: %.2e°', ...
+                               jsonFile, posError, angError);
+            title(ax, titleStr, 'Interpreter', 'none', 'FontSize', 12, 'FontWeight', 'bold', 'Color', 'k');
+            
+            startingGuess = thetaSolved;
+        else
+            fprintf('FAILURE: Impossible configuration or singularity reached.\n');
+            startingGuess = thetaGuesses;
+        end
+        
+        if launchSliderFlag
+            launchLinkageSlider(mechanism, inputJoints, startingGuess, angle_limits, showLabelsFlag);
+        else
+            fprintf('Dynamic slider launch bypassed.\n');
+        end
     end
 end

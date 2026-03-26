@@ -1,0 +1,1409 @@
+{
+  "bodies": [
+    {
+      "name": "Frame",
+      "points": [
+        {
+          "id": "Theta_l1_Leg1",
+          "location": [
+            0.900237835282498,
+            0.96538688613730506,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l1_Leg2",
+          "location": [
+            0.38593065023401257,
+            1.2623222778712069,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l1_Leg3",
+          "location": [
+            -1.2861684855165105,
+            0.2969353917339021,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l1_Leg4",
+          "location": [
+            -1.2861684855165105,
+            -0.29693539173390177,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l1_Leg5",
+          "location": [
+            0.38593065023401246,
+            -1.2623222778712069,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l1_Leg6",
+          "location": [
+            0.90023783528249823,
+            -0.965386886137305,
+            0
+          ]
+        },
+        {
+          "id": "Virt_X",
+          "location": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Platform",
+      "points": [
+        {
+          "id": "Theta_u3_Leg1",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg2",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg3",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg4",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg5",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg6",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Virt_Roll",
+          "location": [
+            0,
+            0,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Base_U1",
+      "points": [
+        {
+          "id": "Theta_l1_Leg1",
+          "location": [
+            0.900237835282498,
+            0.96538688613730506,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l2_Leg1",
+          "location": [
+            0.900237835282498,
+            0.96538688613730506,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Lower1",
+      "points": [
+        {
+          "id": "Theta_l2_Leg1",
+          "location": [
+            0.900237835282498,
+            0.96538688613730506,
+            0
+          ]
+        },
+        {
+          "id": "Piston1",
+          "location": [
+            0.750118917641249,
+            1.0023086853393157,
+            0.275
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Upper1",
+      "points": [
+        {
+          "id": "Piston1",
+          "location": [
+            0.750118917641249,
+            1.0023086853393157,
+            0.275
+          ]
+        },
+        {
+          "id": "Theta_u1_Leg1",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S1_1",
+      "points": [
+        {
+          "id": "Theta_u1_Leg1",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u2_Leg1",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S2_1",
+      "points": [
+        {
+          "id": "Theta_u2_Leg1",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg1",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Base_U2",
+      "points": [
+        {
+          "id": "Theta_l1_Leg2",
+          "location": [
+            0.38593065023401257,
+            1.2623222778712069,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l2_Leg2",
+          "location": [
+            0.38593065023401257,
+            1.2623222778712069,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Lower2",
+      "points": [
+        {
+          "id": "Theta_l2_Leg2",
+          "location": [
+            0.38593065023401257,
+            1.2623222778712069,
+            0
+          ]
+        },
+        {
+          "id": "Piston2",
+          "location": [
+            0.4929653251170063,
+            1.1507763812062666,
+            0.275
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Upper2",
+      "points": [
+        {
+          "id": "Piston2",
+          "location": [
+            0.4929653251170063,
+            1.1507763812062666,
+            0.275
+          ]
+        },
+        {
+          "id": "Theta_u1_Leg2",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S1_2",
+      "points": [
+        {
+          "id": "Theta_u1_Leg2",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u2_Leg2",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S2_2",
+      "points": [
+        {
+          "id": "Theta_u2_Leg2",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg2",
+          "location": [
+            0.60000000000000009,
+            1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Base_U3",
+      "points": [
+        {
+          "id": "Theta_l1_Leg3",
+          "location": [
+            -1.2861684855165105,
+            0.2969353917339021,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l2_Leg3",
+          "location": [
+            -1.2861684855165105,
+            0.2969353917339021,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Lower3",
+      "points": [
+        {
+          "id": "Theta_l2_Leg3",
+          "location": [
+            -1.2861684855165105,
+            0.2969353917339021,
+            0
+          ]
+        },
+        {
+          "id": "Piston3",
+          "location": [
+            -1.2430842427582554,
+            0.14846769586695113,
+            0.275
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Upper3",
+      "points": [
+        {
+          "id": "Piston3",
+          "location": [
+            -1.2430842427582554,
+            0.14846769586695113,
+            0.275
+          ]
+        },
+        {
+          "id": "Theta_u1_Leg3",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S1_3",
+      "points": [
+        {
+          "id": "Theta_u1_Leg3",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u2_Leg3",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S2_3",
+      "points": [
+        {
+          "id": "Theta_u2_Leg3",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg3",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Base_U4",
+      "points": [
+        {
+          "id": "Theta_l1_Leg4",
+          "location": [
+            -1.2861684855165105,
+            -0.29693539173390177,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l2_Leg4",
+          "location": [
+            -1.2861684855165105,
+            -0.29693539173390177,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Lower4",
+      "points": [
+        {
+          "id": "Theta_l2_Leg4",
+          "location": [
+            -1.2861684855165105,
+            -0.29693539173390177,
+            0
+          ]
+        },
+        {
+          "id": "Piston4",
+          "location": [
+            -1.2430842427582554,
+            -0.1484676958669508,
+            0.275
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Upper4",
+      "points": [
+        {
+          "id": "Piston4",
+          "location": [
+            -1.2430842427582554,
+            -0.1484676958669508,
+            0.275
+          ]
+        },
+        {
+          "id": "Theta_u1_Leg4",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S1_4",
+      "points": [
+        {
+          "id": "Theta_u1_Leg4",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u2_Leg4",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S2_4",
+      "points": [
+        {
+          "id": "Theta_u2_Leg4",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg4",
+          "location": [
+            -1.2,
+            1.4695761589768238E-16,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Base_U5",
+      "points": [
+        {
+          "id": "Theta_l1_Leg5",
+          "location": [
+            0.38593065023401246,
+            -1.2623222778712069,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l2_Leg5",
+          "location": [
+            0.38593065023401246,
+            -1.2623222778712069,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Lower5",
+      "points": [
+        {
+          "id": "Theta_l2_Leg5",
+          "location": [
+            0.38593065023401246,
+            -1.2623222778712069,
+            0
+          ]
+        },
+        {
+          "id": "Piston5",
+          "location": [
+            0.4929653251170063,
+            -1.1507763812062666,
+            0.275
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Upper5",
+      "points": [
+        {
+          "id": "Piston5",
+          "location": [
+            0.4929653251170063,
+            -1.1507763812062666,
+            0.275
+          ]
+        },
+        {
+          "id": "Theta_u1_Leg5",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S1_5",
+      "points": [
+        {
+          "id": "Theta_u1_Leg5",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u2_Leg5",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S2_5",
+      "points": [
+        {
+          "id": "Theta_u2_Leg5",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg5",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Base_U6",
+      "points": [
+        {
+          "id": "Theta_l1_Leg6",
+          "location": [
+            0.90023783528249823,
+            -0.965386886137305,
+            0
+          ]
+        },
+        {
+          "id": "Theta_l2_Leg6",
+          "location": [
+            0.90023783528249823,
+            -0.965386886137305,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Lower6",
+      "points": [
+        {
+          "id": "Theta_l2_Leg6",
+          "location": [
+            0.90023783528249823,
+            -0.965386886137305,
+            0
+          ]
+        },
+        {
+          "id": "Piston6",
+          "location": [
+            0.75011891764124916,
+            -1.0023086853393157,
+            0.275
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leg_Upper6",
+      "points": [
+        {
+          "id": "Piston6",
+          "location": [
+            0.75011891764124916,
+            -1.0023086853393157,
+            0.275
+          ]
+        },
+        {
+          "id": "Theta_u1_Leg6",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S1_6",
+      "points": [
+        {
+          "id": "Theta_u1_Leg6",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u2_Leg6",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghost_Top_S2_6",
+      "points": [
+        {
+          "id": "Theta_u2_Leg6",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        },
+        {
+          "id": "Theta_u3_Leg6",
+          "location": [
+            0.60000000000000009,
+            -1.0392304845413263,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Virt_X_body",
+      "points": [
+        {
+          "id": "Virt_X",
+          "location": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Virt_Y",
+          "location": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Virt_Y_body",
+      "points": [
+        {
+          "id": "Virt_Y",
+          "location": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Virt_Z",
+          "location": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Virt_Z_body",
+      "points": [
+        {
+          "id": "Virt_Z",
+          "location": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "Virt_Yaw",
+          "location": [
+            0,
+            0,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Virt_Yaw_body",
+      "points": [
+        {
+          "id": "Virt_Yaw",
+          "location": [
+            0,
+            0,
+            0.55
+          ]
+        },
+        {
+          "id": "Virt_Pitch",
+          "location": [
+            0,
+            0,
+            0.55
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Virt_Pitch_body",
+      "points": [
+        {
+          "id": "Virt_Pitch",
+          "location": [
+            0,
+            0,
+            0.55
+          ]
+        },
+        {
+          "id": "Virt_Roll",
+          "location": [
+            0,
+            0,
+            0.55
+          ]
+        }
+      ]
+    }
+  ],
+  "joints": [
+    {
+      "label": "Theta_l1_Leg1",
+      "bodies": [
+        "Frame",
+        "Ghost_Base_U1"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_l2_Leg1",
+      "bodies": [
+        "Ghost_Base_U1",
+        "Leg_Lower1"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Piston1",
+      "bodies": [
+        "Leg_Lower1",
+        "Leg_Upper1"
+      ],
+      "type": "prismatic",
+      "axis": [
+        -0.4758517955925346,
+        0.11703591208118429,
+        0.87170388545347555
+      ]
+    },
+    {
+      "label": "Theta_u1_Leg1",
+      "bodies": [
+        "Leg_Upper1",
+        "Ghost_Top_S1_1"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_u2_Leg1",
+      "bodies": [
+        "Ghost_Top_S1_1",
+        "Ghost_Top_S2_1"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Theta_u3_Leg1",
+      "bodies": [
+        "Ghost_Top_S2_1",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Theta_l1_Leg2",
+      "bodies": [
+        "Frame",
+        "Ghost_Base_U2"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_l2_Leg2",
+      "bodies": [
+        "Ghost_Base_U2",
+        "Leg_Lower2"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Piston2",
+      "bodies": [
+        "Leg_Lower2",
+        "Leg_Upper2"
+      ],
+      "type": "prismatic",
+      "axis": [
+        0.33928197081365513,
+        -0.353581787378983,
+        0.87170388545347544
+      ]
+    },
+    {
+      "label": "Theta_u1_Leg2",
+      "bodies": [
+        "Leg_Upper2",
+        "Ghost_Top_S1_2"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_u2_Leg2",
+      "bodies": [
+        "Ghost_Top_S1_2",
+        "Ghost_Top_S2_2"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Theta_u3_Leg2",
+      "bodies": [
+        "Ghost_Top_S2_2",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Theta_l1_Leg3",
+      "bodies": [
+        "Frame",
+        "Ghost_Base_U3"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_l2_Leg3",
+      "bodies": [
+        "Ghost_Base_U3",
+        "Leg_Lower3"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Piston3",
+      "bodies": [
+        "Leg_Lower3",
+        "Leg_Upper3"
+      ],
+      "type": "prismatic",
+      "axis": [
+        0.13656982477887961,
+        -0.4706176994601674,
+        0.87170388545347544
+      ]
+    },
+    {
+      "label": "Theta_u1_Leg3",
+      "bodies": [
+        "Leg_Upper3",
+        "Ghost_Top_S1_3"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_u2_Leg3",
+      "bodies": [
+        "Ghost_Top_S1_3",
+        "Ghost_Top_S2_3"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Theta_u3_Leg3",
+      "bodies": [
+        "Ghost_Top_S2_3",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Theta_l1_Leg4",
+      "bodies": [
+        "Frame",
+        "Ghost_Base_U4"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_l2_Leg4",
+      "bodies": [
+        "Ghost_Base_U4",
+        "Leg_Lower4"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Piston4",
+      "bodies": [
+        "Leg_Lower4",
+        "Leg_Upper4"
+      ],
+      "type": "prismatic",
+      "axis": [
+        0.13656982477887961,
+        0.4706176994601674,
+        0.87170388545347544
+      ]
+    },
+    {
+      "label": "Theta_u1_Leg4",
+      "bodies": [
+        "Leg_Upper4",
+        "Ghost_Top_S1_4"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_u2_Leg4",
+      "bodies": [
+        "Ghost_Top_S1_4",
+        "Ghost_Top_S2_4"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Theta_u3_Leg4",
+      "bodies": [
+        "Ghost_Top_S2_4",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Theta_l1_Leg5",
+      "bodies": [
+        "Frame",
+        "Ghost_Base_U5"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_l2_Leg5",
+      "bodies": [
+        "Ghost_Base_U5",
+        "Leg_Lower5"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Piston5",
+      "bodies": [
+        "Leg_Lower5",
+        "Leg_Upper5"
+      ],
+      "type": "prismatic",
+      "axis": [
+        0.33928197081365524,
+        0.35358178737898294,
+        0.87170388545347532
+      ]
+    },
+    {
+      "label": "Theta_u1_Leg5",
+      "bodies": [
+        "Leg_Upper5",
+        "Ghost_Top_S1_5"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_u2_Leg5",
+      "bodies": [
+        "Ghost_Top_S1_5",
+        "Ghost_Top_S2_5"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Theta_u3_Leg5",
+      "bodies": [
+        "Ghost_Top_S2_5",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Theta_l1_Leg6",
+      "bodies": [
+        "Frame",
+        "Ghost_Base_U6"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_l2_Leg6",
+      "bodies": [
+        "Ghost_Base_U6",
+        "Leg_Lower6"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Piston6",
+      "bodies": [
+        "Leg_Lower6",
+        "Leg_Upper6"
+      ],
+      "type": "prismatic",
+      "axis": [
+        -0.47585179559253482,
+        -0.11703591208118444,
+        0.87170388545347544
+      ]
+    },
+    {
+      "label": "Theta_u1_Leg6",
+      "bodies": [
+        "Leg_Upper6",
+        "Ghost_Top_S1_6"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Theta_u2_Leg6",
+      "bodies": [
+        "Ghost_Top_S1_6",
+        "Ghost_Top_S2_6"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Theta_u3_Leg6",
+      "bodies": [
+        "Ghost_Top_S2_6",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Virt_X",
+      "bodies": [
+        "Frame",
+        "Virt_X_body"
+      ],
+      "type": "prismatic",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "label": "Virt_Y",
+      "bodies": [
+        "Virt_X_body",
+        "Virt_Y_body"
+      ],
+      "type": "prismatic",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Virt_Z",
+      "bodies": [
+        "Virt_Y_body",
+        "Virt_Z_body"
+      ],
+      "type": "prismatic",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Virt_Yaw",
+      "bodies": [
+        "Virt_Z_body",
+        "Virt_Yaw_body"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "label": "Virt_Pitch",
+      "bodies": [
+        "Virt_Yaw_body",
+        "Virt_Pitch_body"
+      ],
+      "type": "revolute",
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "label": "Virt_Roll",
+      "bodies": [
+        "Virt_Pitch_body",
+        "Platform"
+      ],
+      "type": "revolute",
+      "axis": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

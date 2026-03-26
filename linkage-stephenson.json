@@ -1,0 +1,29 @@
+{
+  "bodies": [
+    { "name": "Frame", "points": [ {"id": "R1", "location": [0, 0, 0]}, {"id": "R2", "location": [4.0, 0, 0]} ] },
+    { "name": "Crank", "points": [ {"id": "R1", "location": [0, 0, 0]}, {"id": "S1_yaw", "location": [1.0, 0, 0]} ] },
+    
+    { "name": "Ghost_S1_A", "points": [ {"id": "S1_yaw", "location": [1.0, 0, 0]}, {"id": "S1_pitch", "location": [1.0, 0, 0]} ] },
+    { "name": "Ghost_S1_B", "points": [ {"id": "S1_pitch", "location": [1.0, 0, 0]}, {"id": "S1_roll", "location": [1.0, 0, 0]} ] },
+    
+    { "name": "Coupler", "points": [ {"id": "S1_roll", "location": [1.0, 0, 0]}, {"id": "S2_yaw", "location": [4.5, 0, 1.93649167]} ] },
+    
+    { "name": "Ghost_S2_A", "points": [ {"id": "S2_yaw", "location": [4.5, 0, 1.93649167]}, {"id": "S2_pitch", "location": [4.5, 0, 1.93649167]} ] },
+    { "name": "Ghost_S2_B", "points": [ {"id": "S2_pitch", "location": [4.5, 0, 1.93649167]}, {"id": "S2_roll", "location": [4.5, 0, 1.93649167]} ] },
+    
+    { "name": "Lever", "points": [ {"id": "S2_roll", "location": [4.5, 0, 1.93649167]}, {"id": "R2", "location": [4.0, 0, 0]} ] }
+  ],
+  "joints": [
+    {"label": "R1",       "bodies": ["Frame", "Crank"],         "type": "revolute", "axis": [0, 0, 1]},
+    
+    {"label": "S1_yaw",   "bodies": ["Crank", "Ghost_S1_A"],    "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "S1_pitch", "bodies": ["Ghost_S1_A", "Ghost_S1_B"],"type": "revolute", "axis": [0, 1, 0]},
+    {"label": "S1_roll",  "bodies": ["Ghost_S1_B", "Coupler"],  "type": "revolute", "axis": [1, 0, 0]},
+    
+    {"label": "S2_yaw",   "bodies": ["Coupler", "Ghost_S2_A"],  "type": "revolute", "axis": [0, 0, 1]},
+    {"label": "S2_pitch", "bodies": ["Ghost_S2_A", "Ghost_S2_B"],"type": "revolute", "axis": [0, 1, 0]},
+    {"label": "S2_roll",  "bodies": ["Ghost_S2_B", "Lever"],    "type": "revolute", "axis": [1, 0, 0]},
+    
+    {"label": "R2",       "bodies": ["Lever", "Frame"],         "type": "revolute", "axis": [0, 1, 0]}
+  ]
+}

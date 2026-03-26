@@ -1,0 +1,14 @@
+{
+  "bodies": [
+    { "name": "Frame", "points": [ {"id": "TrackX", "location": [0,0,0]}, {"id": "TrackY", "location": [0,0,0]} ] },
+    { "name": "SliderX", "points": [ {"id": "TrackX", "location": [-0.4,0,0]}, {"id": "PinX", "location": [0,0,0]} ] },
+    { "name": "Rod", "points": [ {"id": "PinX", "location": [0,0,0]}, {"id": "PinY", "location": [-0.4,0.3,0]} ] },
+    { "name": "SliderY", "points": [ {"id": "PinY", "location": [0,0,0]}, {"id": "TrackY", "location": [0,-0.3,0]} ] }
+  ],
+  "joints": [
+    {"label": "TrackX", "bodies": ["Frame", "SliderX"], "type": "prismatic", "axis": [1,0,0]},
+    {"label": "PinX", "bodies": ["SliderX", "Rod"], "type": "revolute"},
+    {"label": "PinY", "bodies": ["Rod", "SliderY"], "type": "revolute"},
+    {"label": "TrackY", "bodies": ["Frame", "SliderY"], "type": "prismatic", "axis": [0,1,0]}
+  ]
+}
