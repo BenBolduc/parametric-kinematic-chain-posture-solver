@@ -23,8 +23,13 @@ For a deep dive into the underlying mathematics, including the Cycle Basis algor
 
 ## References
 [1] Daniel Alazard and Francesco Sanfedino. Satellite Dynamics Toolbox library (SDTlib) - User’s guide. Tech. rep. Institut Supérieur de l’Aéronautique et de l’Espace, 2021.
+
 [2] Kemin Zhou and John Comstock Doyle. Essentials of Robust Control. Vol. 104. Upper Saddle River, NJ: Prentice Hall, 1999. isbn: 9780137739790.
+
 [3] Lung-Wen Tsai. Mechanism design: enumeration of kinematic structures according to function. CRC press, 2000.
+
 [4] Andreas Müller. “Representation of the kinematic topology of mechanisms for kinematic analysis”. In: Mechanism and Machine Theory 90 (2015), pp. 88–105.
+
 [5] TomomichiSugihara. “Solvability-unconcerned inverse kinematics by the Levenberg–Marquardt method”. In: IEEE Transactions on Robotics 27.5 (2011), pp. 984–991.
+
 [6] Simon Görries. “ATHENA Space Telescope: Line of Sight Control with a Hexapod in the Loop”. MA thesis. Stockholm, Sweden: KTH Royal Institute of Technology, 2017.
