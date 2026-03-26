@@ -5,6 +5,15 @@ In space robotics, tools like the Satellite Dynamics Toolbox (SDTlib) [1] rely o
 
 This research develops a parametric numerical solver to compute the constrained posture of both planar and spatial multi-loop mechanisms. By using a standardized JSON architecture and graph theory [3, 4], the solver autonomously discovers independent kinematic loops and uses the Levenberg-Marquardt algorithm [5] to solve parametrically obtained loop closure constraints. The custom solver was verified and validated against ESA's Athena spacecraft hexapod platform [6] achieving a high precision accuracy of $10^{-16}$ m. By successfully solving the posture in a parametric manner, the custom solver effectively bridges the gap between complex physical multi-body systems and the approximation of LFTs.
 
+## Supervision
+This project was developed at **ISAE-SUPAERO** under the guidance of the following tutors:
+
+| Name | Department |
+| :--- | :--- |
+| **José O. NEVES** | ISAE-SUPAERO |
+| **Francesco SANFEDINO** | ISAE-SUPAERO |
+| **Daniel ALAZARD** | ISAE-SUPAERO |
+
 ## How to Run
 This tool is built entirely in MATLAB. No external toolboxes are required.
 
