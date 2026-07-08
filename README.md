@@ -27,7 +27,7 @@ Mechanisms are defined using a standardized `.json` architecture. Users only nee
 
 For complex spatial mechanisms, please refer to the templates provided in the `linkages/` directory (good examples are the ATHENA hexapod or the 6-bar linkages). Appendices A and B from the report in the `docs/` repository can also be used as a reference for defining mechanisms using the `.json` structure.
 
-## Documentation & Theory
+## Documentation and Theory
 For a deep dive into the underlying mathematics, including the Cycle Basis algorithm, the parametric constraint equations, and the Levenberg-Marquardt numerical optimization implementation, please see the full Master's Report located in the `docs/` folder.
 
 ## References
